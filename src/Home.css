@@ -10,6 +10,6 @@
 }
 .home__row {
   display: flex;
-  margin: 0 5px;
+  margin: 0 10px;
   z-index: 1;
 }

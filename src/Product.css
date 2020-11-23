@@ -1,14 +1,19 @@
 .product {
   display: flex;
   flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
   max-height: 400px;
   min-width: 100px;
   background-color: white;
   margin: 10px;
   z-index: 1;
+  padding: 20px;
+  width: 100%;
 }
 .product__rating {
   display: flex;
+  margin-bottom: 5px;
 }
 .product > img {
   width: 100%;
@@ -20,6 +25,7 @@
   background-color: #f0c14b;
   border: 1px solid;
   border-color: #a88734 #9c7e31 #846a29;
+  padding: 2px 5px;
 }
 .product__price {
   margin-top: 5px;
@@ -27,4 +33,5 @@
 .product__info {
   height: 100px;
   margin-bottom: 15px;
+  width: 100%;
 }
