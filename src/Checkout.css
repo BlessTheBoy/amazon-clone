@@ -8,3 +8,6 @@
 .checkout__ad {
   width: 100%;
 }
+.checkout__empty {
+  padding: 15px;
+}

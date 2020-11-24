@@ -1,11 +1,36 @@
-import logo from "./Group1.png";
 import "./App.css";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Header from "./Header";
 import Home from "./Home";
 import Checkout from "./Checkout";
+import Login from "./Login";
+import { useStateValue } from "./StateProvider";
+import { useEffect } from "react";
+import { auth } from "./firebase";
+import Footer from "./Footer";
 
 function App() {
+  const [{ user }, dispatch] = useStateValue();
+
+  useEffect(() => {
+    const unsubscribe = auth.onAuthStateChanged((authUser) => {
+      if (authUser) {
+        dispatch({
+          type: "SET_USER",
+          user: authUser,
+        });
+      } else {
+        dispatch({
+          type: "SET_USER",
+          user: null,
+        });
+      }
+    });
+    return () => {
+      unsubscribe();
+    };
+  }, []);
+  console.log(user);
   return (
     <Router>
       <div className="app">
@@ -13,13 +38,16 @@ function App() {
           <Route path="/checkout">
             <Header />
             <Checkout />
+            <Footer />
           </Route>
           <Route path="/login">
             <Login />
+            <Footer />
           </Route>
           <Route path="/">
             <Header />
             <Home />
+            <Footer />
           </Route>
         </Switch>
       </div>
